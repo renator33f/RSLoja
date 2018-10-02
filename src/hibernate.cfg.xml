@@ -22,14 +22,15 @@
 		<property name="hibernate.connection.autocommit">false</property>  <!-- Commit Automatico -->
 		<property name="hibernate.connection.pool_size">50</property> <!-- Poll de conexão -->
 
-
-	    <mapping class="curso.angular.model.Estados" />
-	    <mapping class="curso.angular.model.Cidades" />
-		<mapping class="curso.angular.model.Cliente" />
-		<mapping class="curso.angular.model.Fornecedor" />
-		<mapping class="curso.angular.model.Livro" />
-		<mapping class="curso.angular.model.Pedido" />
-		<mapping class="curso.angular.model.ItemPedido" />
+        <!--
+	    <mapping class="angular.model.Estados" />
+	    <mapping class="angular.model.Cidades" />
+		<mapping class="angular.model.Cliente" />
+		<mapping class="angular.model.Fornecedor" />
+		<mapping class="angular.model.Livro" />
+		<mapping class="angular.model.Pedido" />
+		<mapping class="angular.model.ItemPedido" />
+		-->
 		
 		
 	</session-factory>

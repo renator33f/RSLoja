@@ -1,4 +1,4 @@
-<html ng-app="loja">
+<html ng-app="rsloja">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
@@ -6,7 +6,7 @@
 
 
 <a href="#fornecedor/cadastro">Novo
-<img alt="Novo" src="resources/img/add-icon.png" border="0">
+<img alt="Novo" src="" border="0">
 </a>
 
 <br/>
@@ -30,15 +30,15 @@
 			<tbody>
 				<tr ng-repeat="fornecedor in data | filter:filtro"> 
 					<td>{{fornecedor.id}}</td>
-					<td><img src="{{fornecedor.foto}}" style="width: 40px; height: 43px"/></td>
+					<td><img src="" style="width: 40px; height: 43px"/></td>
 					<td>{{fornecedor.razaoSocial}}</td>
 					<td>{{fornecedor.cnpj}}</td>
 					<td>{{fornecedor.telefone}}</td>
 					<td> <a href ng-click="removerFornecedor(fornecedor.id);">Apagar
-					 <img alt="Remover" src="resources/img/delete-icon.png" border="0">
+					 <img alt="Remover" src="" border="0">
 					</a></td>
 					<td> <a href ng-click="editarFornecedor(fornecedor.id);">Editar
-					 <img alt="Editar" src="resources/img/edit-icon.png" border="0">
+					 <img alt="Editar" src="" border="0">
 					</a></td>
 				</tr>
 			</tbody>

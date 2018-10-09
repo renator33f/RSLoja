@@ -1,4 +1,4 @@
-<html ng-app="loja">
+<html ng-app="rsloja">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
@@ -14,7 +14,7 @@
   	<td>
   	 <a href ng-click="adicionarClienteCarrinho(cliente);">Adicionar
 					 <img alt="Adicionar Cliente" title="Adicionar Cliente" 
-					 src="resources/img/add-icon.png" border="0">
+					 src="" border="0">
 					</a>
 		</td>
   </tr>
@@ -48,19 +48,19 @@
 			<tbody>
 				<tr ng-repeat="item in itensCarrinho | filter:filtro"> 
 					<td>{{item.livro.id}}</td>
-					<td><img src="{{item.livro.foto}}" style="width: 80px; height: 100px"/></td>
+					<td><img src="" style="width: 80px; height: 100px"/></td>
 					<td>{{item.livro.titulo}}</td>
 					<td> <input type="number" value="{{item.quantidade}}" ng-change="recalculo(item.quantidade, item.livro.id);" ng-model="item.quantidade"/></td>
 					<td>{{item.livro.valor}}</td>
 					<td> <a href ng-click="removerLivroCarrinho(item.livro.id);">Apagar
-					 <img alt="Remover" src="resources/img/delete-icon.png" border="0">
+					 <img alt="Remover" src="" border="0">
 					</a></td>
 				</tr>
 			</tbody>
 		</table>
 		<a href ng-click="finalizarPedido();">
 		 <img alt="Finalizar" border="0"
-		  src="resources/img/finalizar-pedido.png"
+		  src=""
 		   title="Finalizar Pedido">
 		</a>
 		<h1>TOTAL: {{pedidoObjeto.valorTotal}}</h1>

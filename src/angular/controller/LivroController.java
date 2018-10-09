@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
-import curso.angular.dao.DaoImplementacao;
-import curso.angular.dao.DaoInterface;
-import curso.angular.model.Livro;
+import angular.dao.DaoImplementacao;
+import angular.dao.DaoInterface;
+import angular.model.Livro;
 
 @Controller
 @RequestMapping(value = "/livro")

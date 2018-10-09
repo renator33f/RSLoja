@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
-import curso.angular.dao.DaoImplementacao;
-import curso.angular.dao.DaoInterface;
-import curso.angular.model.Fornecedor;
+import angular.dao.DaoImplementacao;
+import angular.dao.DaoInterface;
+import angular.model.Fornecedor;
 
 @Controller
 @RequestMapping(value = "/fornecedor")

@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
-import curso.angular.dao.DaoImplementacao;
-import curso.angular.dao.DaoInterface;
-import curso.angular.model.ItemPedido;
-import curso.angular.model.Pedido;
-import curso.angular.model.PedidoBean;
+import angular.dao.DaoImplementacao;
+import angular.dao.DaoInterface;
+import angular.model.ItemPedido;
+import angular.model.Pedido;
+import angular.model.PedidoBean;
 
 @Controller
 @RequestMapping(value = "/pedido")

@@ -3,7 +3,7 @@ package angular.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import curso.angular.model.PedidoBean;
+import angular.model.PedidoBean;
 
 public class Teste {
 

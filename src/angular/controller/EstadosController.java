@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
-import curso.angular.dao.DaoImplementacao;
-import curso.angular.dao.DaoInterface;
-import curso.angular.model.Estados;
+import angular.dao.DaoImplementacao;
+import angular.dao.DaoInterface;
+import angular.model.Estados;
 
 @Controller
 @RequestMapping(value = "/estados")

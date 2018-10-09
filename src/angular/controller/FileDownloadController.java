@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import curso.angular.model.ItemPedido;
-import curso.angular.model.Pedido;
-import curso.angular.model.PedidoBean;
+import angular.model.ItemPedido;
+import angular.model.Pedido;
+import angular.model.PedidoBean;
 
 @Controller
 @RequestMapping("/imprimirPedido")

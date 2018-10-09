@@ -55,7 +55,7 @@ public class ReportUtil implements Serializable{
 			SEPARATOR = "";
 		}	
 		
-		/*caminho para imgens*/
+		/* caminho para imagens */
 		parametrosRelatorio.put("REPORT_PARAMETERS_IMG", caminhoRelatorio); 
 
 		/* caminho completo até o relatório compilado indicado */

@@ -7,7 +7,6 @@ import javax.persistence.Id;
 
 /**
  * Modelo que representa a tabel de Estados do banco
- * @author alex
  *
  */
 @Entity
@@ -72,3 +71,5 @@ public class Estados {
 	}
 
 }
+
+

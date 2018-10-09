@@ -7,11 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
 /**
  * Modelo que representa a tabel de cidades do banco
- * @author alex
- *
  */
+
 @Entity
 public class Cidades {
 

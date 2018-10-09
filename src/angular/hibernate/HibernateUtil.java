@@ -7,7 +7,6 @@ import org.hibernate.cfg.Configuration;
 
 /**
  * Responsavel por estabelecer a conexão do hibernate
- * @author alex
  */
 public class HibernateUtil implements Serializable {
 

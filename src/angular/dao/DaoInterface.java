@@ -7,8 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Interface destinada ao metodos padrão de operações no banco
- * @author alex
- * @param <T>
  */
 @Transactional(noRollbackFor = Exception.class)
 @Service

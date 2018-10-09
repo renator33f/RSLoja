@@ -14,7 +14,6 @@ import org.hibernate.annotations.ForeignKey;
 
 /**
  * Modelo que representa a tabel de Cliente do banco
- * @author alex
  *
  */
 @Entity
@@ -171,3 +170,4 @@ public class Cliente implements Serializable {
 	}
 
 }
+

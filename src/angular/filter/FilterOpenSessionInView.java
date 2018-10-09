@@ -17,12 +17,11 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
-import curso.angular.hibernate.HibernateUtil;
-import curso.angular.listener.ContextLoaderListenerCaixakiUtils;
+import angular.hibernate.HibernateUtil;
+import angular.listener.ContextLoaderListenerCaixakiUtils;
 
 /**
- * Intercepta todas as requisições, faz commit e rollback 
- * @author alex
+ * Intercepta todas as requisições, faz commit e rollback
  */
 @WebFilter(filterName = "conexaoFilter")
 public class FilterOpenSessionInView extends DelegatingFilterProxy implements
@@ -95,3 +94,4 @@ public class FilterOpenSessionInView extends DelegatingFilterProxy implements
 		}
 	}
 }
+

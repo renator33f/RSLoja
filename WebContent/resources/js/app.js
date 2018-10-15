@@ -1,6 +1,6 @@
 var permissao = false;
 // configuração do módulo
-var app = angular.module('loja', [ 'ngRoute', 'ngResource', 'ngAnimate' ]);
+var app = angular.module('rsloja', [ 'ngRoute', 'ngResource', 'ngAnimate' ]);
 
 
 // configurando rotas

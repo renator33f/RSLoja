@@ -43,7 +43,7 @@
 				<th>Título</th>
 				<th>Quantidade</th>
 				<th>Valor</th>
-				<th>Remover</th>
+				<th>Excluir</th>
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in itensCarrinho | filter:filtro"> 
@@ -52,8 +52,8 @@
 					<td>{{item.livro.titulo}}</td>
 					<td> <input type="number" value="{{item.quantidade}}" ng-change="recalculo(item.quantidade, item.livro.id);" ng-model="item.quantidade"/></td>
 					<td>{{item.livro.valor}}</td>
-					<td> <a href ng-click="removerLivroCarrinho(item.livro.id);">Apagar
-					 <img alt="Remover" src="" border="0">
+					<td> <a href ng-click="removerLivroCarrinho(item.livro.id);">Excluir
+					 <img alt="Excluir" src="resources\img\delete-icon.png" border="0">
 					</a></td>
 				</tr>
 			</tbody>

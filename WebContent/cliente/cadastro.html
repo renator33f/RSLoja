@@ -2,9 +2,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
-<h1>Cadastro de clientes</h1>
-<a href="#clientelist"> Lista de clientes <img alt="Novo"
-	src="" border="0">
+<h1>Cadastro de Clientes</h1>
+<a href="#clientelist"> Lista de Clientes <img alt="Novo" src="resources\img\list-icon.png" border="0">
 </a>
 
 <br />
@@ -81,33 +80,26 @@
 				<div class="row">
 					<div class="col-md-3">
 						<div class="form-group">
-							<label>Banco de Dados</label> 
-							<input type="radio" class="form-control" name="interesse" ng-model="cliente.interesse" value="banco">						
+							<label>Pessoa Física</label> 
+							<input type="radio" class="form-control" name="tipo" ng-model="cliente.interesse" value="PF" ng-checked="true">						
 						</div>
 					</div>
 					
 					
 					<div class="col-md-3">
 						<div class="form-group">
-							<label>Programação</label> 
-							<input type="radio" class="form-control" name="interesse" ng-model="cliente.interesse" value="programacao" ng-checked="true">						
+							<label>Pessoa Juridica</label> 
+							<input type="radio" class="form-control" name="tipo" ng-model="cliente.interesse" value="PJ">						
 						</div>
-					</div>
+					</div>		
 					
-					
-					<div class="col-md-3">
-						<div class="form-group">
-							<label>Análise</label> 
-							<input type="radio" class="form-control" name="interesse" ng-model="cliente.interesse" value="analise">						
-						</div>
-					</div>
 				</div>
 				
 				
 				<div class="row">
 					<div class="col-md-3">
 						<div class="form-group">
-							<label>Cpf</label> 
+							<label>CPF</label> 
 							<input type="text" class="form-control" id="cpf" name="cpf" ng-model="cliente.cpf" >						
 						</div>
 					</div>
@@ -117,7 +109,7 @@
 				<div class="row">
 					<div class="col-md-3">
 						<div class="form-group"> 
-						   <label>Estado</label> 
+						   <label>UF</label> 
 							<select ng-model="cliente.estados.id"
 							 id="selectEstados"
 							  class="form-control" onchange="javascript:carregarCidadesChrome(this);"> 
@@ -133,7 +125,7 @@
 					
 					<div class="col-md-5">
 						<div class="form-group"> 
-						   <label>Cidades</label> 
+						   <label>Cidade</label> 
 							<select id="selectCidades" ng-model="cliente.cidades.id" 
 							class="form-control"> 
 							<option value="">Selecione</option>
@@ -155,7 +147,7 @@
 		</div>
 	</div>
  <script type="text/javascript">
- 	$('#telefone').mask('(99) 9999-9999');
+ 	$('#telefone').mask('(99) 99999-9999');
  	$('#cpf').mask('999.999.999-99');
  </script>	
 </html>

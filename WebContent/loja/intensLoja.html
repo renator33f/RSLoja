@@ -53,14 +53,14 @@
 					<td> <input type="number" value="{{item.quantidade}}" ng-change="recalculo(item.quantidade, item.livro.id);" ng-model="item.quantidade"/></td>
 					<td>{{item.livro.valor}}</td>
 					<td> <a href ng-click="removerLivroCarrinho(item.livro.id);">Excluir
-					 <img alt="Excluir" src="resources\img\delete-icon.png" border="0">
+					 <img alt="Excluir" src="../resources/img/delete-icon.png" border="0">
 					</a></td>
 				</tr>
 			</tbody>
 		</table>
 		<a href ng-click="finalizarPedido();">
 		 <img alt="Finalizar" border="0"
-		  src=""
+		  src="../resources/img/finalizar-pedido.png"
 		   title="Finalizar Pedido">
 		</a>
 		<h1>TOTAL: {{pedidoObjeto.valorTotal}}</h1>

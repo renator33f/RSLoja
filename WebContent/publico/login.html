@@ -1,4 +1,4 @@
-<html>
+<html ng-app="rsloja">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>RSLoja - Login</title>
@@ -14,18 +14,26 @@ function processarContext() {
 
 </head>
 <body>
-	<div align="center" style="padding-top: 100px;">
+    <div align="center" style="padding-top: 100px;">
+         <labe>RSLOJA</label>
+    </div>
+    <br/>
+
+	<div align="center" style="padding-bottom: 100px;">
 	
 		<form id="formulario" method="post" name="formulario" onsubmit="processarContext()">
-
+		    		    
 			<label>Login</label>
 			<input type="text" name="j_username" id="j_username" />
 			
 			<label>Senha</label>
 			<input type="password" name="j_password" id="j_password" />
 
-
 			<button type="submit" id="buttonLogin">Entrar</button>
+			
+			<br/>
+			<br/>
+			<img alt="Logotipo" src="../resources/img/logotipo.jpg" border="0">
 		</form>
 	</div>
 

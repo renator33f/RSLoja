@@ -19,7 +19,7 @@ public class ContextLoaderListenerCaixakiUtils extends
 	}
 	
 	/**
-	 * Retorna um obejeto do contexto Spring de acordo com seu nome
+	 * Retorna um objeto do contexto Spring de acordo com seu nome
 	 * @param idNomeBean
 	 * @return Object
 	 */
@@ -28,7 +28,7 @@ public class ContextLoaderListenerCaixakiUtils extends
 	}
 	
 	/**
-	 * Retorna um obejeto do contexto Spring de acordo com sua Class
+	 * Retorna um objeto do contexto Spring de acordo com sua Classa
 	 * @param idNomeBean
 	 * @return Object
 	 */

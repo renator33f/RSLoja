@@ -57,6 +57,11 @@
 		class="angular.controller.EstadosController">
 		<constructor-arg value="angular.model.Estados" />
 	</bean>
+	
+	<bean id="generoController" name="generoController"
+		class="angular.controller.GeneroController">
+		<constructor-arg value="angular.model.Genero" />
+	</bean>
 
 	<bean id="cidadesController" name="cidadesController"
 		class="angular.controller.CidadesController">

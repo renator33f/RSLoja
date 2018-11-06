@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.ForeignKey;
 
 /**
- * Modelo que representa a tabel de Cliente do banco
+ * Modelo que representa a tabela de Clientes do banco
  *
  */
 @Entity
@@ -28,8 +28,14 @@ public class Cliente implements Serializable {
 	private String nome;
 
 	private String endereco;
+	
+	private String bairro;
 
 	private String telefone;
+	
+	private String celular;
+	
+	private String email;
 
 	private String sexo; 
 	
@@ -38,6 +44,12 @@ public class Cliente implements Serializable {
 	private String interesse;
 	
 	private String cpf;
+	
+	private String cnpj;
+	
+	private String rg;
+	
+	private String cep;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@ForeignKey(name="estados_fk")
@@ -142,6 +154,54 @@ public class Cliente implements Serializable {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public String getRg() {
+		return rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+	
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	@Override

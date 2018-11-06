@@ -22,12 +22,20 @@ public class Fornecedor {
 	private String nomeFantasia;
 
 	private String endereco;
+	
+	private String bairro;
+	
+	private String cep;
 
 	private String cnpj;
 
 	private Long inscricaoEstadual;
 	
 	private String telefone;
+	
+	private String email;
+	
+	private String fax;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@ForeignKey(name = "estados_fk")
@@ -129,6 +137,38 @@ public class Fornecedor {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+	
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
 	}
 
 	@Override

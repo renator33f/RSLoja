@@ -53,7 +53,7 @@
 .places-buttons .btn{
     margin-bottom: 30px
 }
-.sidebar .nav > li.active-pro{
+.sidebar .nav > li.active-pro{ 
     position: absolute;
     width: 100%;
     bottom: 10px;

@@ -2,8 +2,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
+<a>
 <h1>Itens Carrinho</h1>
- 
+<img alt="Carrinho" title="Carrinho de Itens"
+	 src="resources/img/carrinho.png" border="0" height="40px;" width="40px;">
+</a>
+<br/>
+<br/>
 
 <label>Pesquisar Cliente <input class="form-control" type="text" ng-model="filtroCliente"></label>
  <button type="button" class="btn btn-info btn-fill btn-wd" ng-click="buscarClienteNome();">Buscar</button>
@@ -14,7 +19,7 @@
   	<td>
   	 <a href ng-click="adicionarClienteCarrinho(cliente);">Adicionar
 					 <img alt="Adicionar Cliente" title="Adicionar Cliente" 
-					 src="" border="0">
+					 src="resources/img/add-icon.png" border="0">
 					</a>
 		</td>
   </tr>
@@ -53,14 +58,14 @@
 					<td> <input type="number" value="{{item.quantidade}}" ng-change="recalculo(item.quantidade, item.livro.id);" ng-model="item.quantidade"/></td>
 					<td>{{item.livro.valor}}</td>
 					<td> <a href ng-click="removerLivroCarrinho(item.livro.id);">Excluir
-					 <img alt="Excluir" src="../resources/img/delete-icon.png" border="0">
+					 <img alt="Excluir" src="resources/img/delete-icon.png" border="0">
 					</a></td>
 				</tr>
 			</tbody>
 		</table>
 		<a href ng-click="finalizarPedido();">
 		 <img alt="Finalizar" border="0"
-		  src="../resources/img/finalizar-pedido.png"
+		  src="resources/img/finalizar-pedido.png"
 		   title="Finalizar Pedido">
 		</a>
 		<h1>TOTAL: {{pedidoObjeto.valorTotal}}</h1>

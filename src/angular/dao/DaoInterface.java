@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Interface destinada ao metodos padrão de operações no banco
+ * Interface destinada aos metodos padrões de operações no banco
  */
 @Transactional(noRollbackFor = Exception.class)
 @Service

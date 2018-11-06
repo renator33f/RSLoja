@@ -30,6 +30,7 @@
 		<mapping class="angular.model.Livro" />
 		<mapping class="angular.model.Pedido" />
 		<mapping class="angular.model.ItemPedido" />
+		<mapping class="angular.model.Genero" />
 		
 		
 		

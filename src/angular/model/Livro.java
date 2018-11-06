@@ -28,6 +28,10 @@ public class Livro {
 	private Long ano;
 
 	private Long paginas;
+	
+	private String edicao;
+	
+	private String volume;
 
 	@Column(columnDefinition = "text")
 	private String foto;
@@ -35,6 +39,10 @@ public class Livro {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@ForeignKey(name = "fornecedor_fk")
 	private Fornecedor fornecedor;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@ForeignKey(name = "genero_fk")
+	private Genero genero;
 	
 	private String valor = "";
 	
@@ -53,6 +61,14 @@ public class Livro {
 	
 	public String getValor() {
 		return valor;
+	}
+	
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 
 	public Long getId() {
@@ -117,6 +133,22 @@ public class Livro {
 
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
+	}
+	
+	public String getEdicao() {
+		return edicao;
+	}
+
+	public void setEdicao(String edicao) {
+		this.edicao = edicao;
+	}
+
+	public String getVolume() {
+		return volume;
+	}
+
+	public void setVolume(String volume) {
+		this.volume = volume;
 	}
 
 	@Override

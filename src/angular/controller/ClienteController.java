@@ -28,7 +28,7 @@ public class ClienteController extends DaoImplementacao<Cliente> implements
 	}
 	  
 	/**
-	 * Salva ou atualiza o cliente
+	 * Salva ou Atualiza o cliente
 	 * @param jsonCliente
 	 * @return ResponseEntity
 	 * @throws Exception
@@ -67,7 +67,7 @@ public class ClienteController extends DaoImplementacao<Cliente> implements
 	}
 	 
 	/**
-	 * Delete o cliente informado
+	 * Deleta o cliente informado
 	 * @param codCliente
 	 * @return String vazia como resposta
 	 * @throws Exception

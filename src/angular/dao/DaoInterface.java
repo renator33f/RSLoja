@@ -28,7 +28,7 @@ public interface DaoInterface<T> {
 	
 	List<T> lista(String campoBanco, String valorCampo) throws Exception;
 	
-	 List<T> lista(String campoBanco, Long valorCampo) throws Exception;
+	List<T> lista(String campoBanco, Long valorCampo) throws Exception;
 	
 	List<T> listaLikeExpression(String campoBanco, String valorCampo) throws Exception;
 	

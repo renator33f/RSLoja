@@ -2,8 +2,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
-<h1>Cadastro de Fornecedor</h1>
-<a href="#fornecedorlist"> Lista de Fornecedores <img alt="Novo"
+<h1>Cadastro de Vendedor</h1>
+<a href="#vendedorlist"> Lista de Vendedores <img alt="Novo"
 	src="resources/img/list-icon.png" border="0">
 </a>
 
@@ -13,95 +13,98 @@
 <div class="col-lg-9 col-md-8"  ng-init="carregarEstados();">
 	<div class="card">
 		<div class="content">
-			<form id="formFornecedor" ng-submit="salvarFornecedor();">
+			<form id="formVendedor" ng-submit="salvarVendedor();">
 				<div class="row">
 				
 					<div class="col-md-3">
 						<div class="form-group">
-							<img alt="Foto" id="imagemFornecedor" src=""  style="width: 118px;height: 140px;" border="0">
+							<img alt="Foto" id="imagemVendedor" src=""  style="width: 118px;height: 140px;" border="0">
 							<input type="file"  id="file"  onchange="javascript:visualizarImg();">
 						</div>
 					</div>
 				
 					<div class="col-md-2">
 						<div class="form-group">
-							<label>Id</label> <input type="text" ng-model="fornecedor.id"
+							<label>Id</label> <input type="text" ng-model="vendedor.id"
 								class="form-control border-input" disabled />
 						</div>
 					</div>
 				</div>
-				
-				<div class="row">
-				    <div class="col-md-3">
-						<div class="form-group">
-							<label>CNPJ</label> <input type="text" id="cnpj"
-								ng-model="fornecedor.cnpj" class="form-control border-input"
-								placeholder="Cnpj" required="required">
-						</div>
-					</div>		
-					
-					<div class="col-md-1">
-						<div class="form-group">
-							<label>Ativo</label> 
-							<input type="checkbox" class="form-control" ng-model="fornecedor.ativo">						
-						</div>
-					</div>							
-				</div>
 
 				<div class="row">
-                    <div class="col-md-6">
-						<div class="form-group">
-							<label for="fantasia">Nome Fantansia</label> <input type="text"
-								required="required" class="form-control border-input"
-								ng-model="fornecedor.nomeFantasia" placeholder="Nome Fantansia">
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">									
 					<div class="col-md-9">
 						<div class="form-group">
-							<label>Razão Social</label> <input type="text" ng-model="fornecedor.razaoSocial"
-								class="form-control border-input" placeholder="Razão Social"
+							<label>Nome</label> <input type="text" ng-model="vendedor.nome"
+								class="form-control border-input" placeholder="Nome"
 								required="required">
 						</div>
 					</div>
 				</div>
 				
+				<div class="row">				
+					<div class="col-md-1">
+						<div class="form-group">
+							<label>Ativo</label> 
+							<input type="checkbox" class="form-control" ng-model="vendedor.ativo" ng-checked="true">						
+						</div>
+					</div>
+					
+					<div class="col-md-2">
+						<div class="form-group">
+							<label>Sexo</label> 
+							<select ng-model="vendedor.sexo" class="form-control"> 
+							  <option value="M">M</option>
+							  <option value="F">F</option>
+							</select>							
+						</div>
+					</div>
+					
+				</div>
+				
 				<div class="row">
+				    <div class="col-md-3">
+						<div class="form-group">
+							<label>CPF</label> 
+							<input type="text" class="form-control" id="cpf" name="cpf" ng-model="vendedor.cpf" >						
+						</div>
+					</div>	
+				</div>
+								
+				<div class="row">					
 					<div class="col-md-9">
 						<div class="form-group">
 							<label for="endereco">Endereço</label> <input type="text"
 								required="required" class="form-control border-input"
-								ng-model="fornecedor.endereco" placeholder="Endereço">
+								ng-model="vendedor.endereco" placeholder="Endereço">
 						</div>
-					</div>		
+					</div>
 				</div>
 				
-				<div class="row">					
+				<div class="row">	
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="bairro">Bairro</label> <input type="text"
-								required="required" class="form-control border-input"
-								ng-model="fornecedor.bairro" placeholder="Bairro">
+								class="form-control border-input" required="required"
+								ng-model="vendedor.bairro" placeholder="Bairro">
 						</div>
-					</div>	
+					</div>
 					
 					<div class="col-md-3">
 						<div class="form-group">
 							<label for="cep">CEP</label> <input type="text"
 								class="form-control border-input" id="cep" name="cep"
-								ng-model="fornecedor.cep" placeholder="CEP">
+								ng-model="vendedor.cep" placeholder="CEP">
 						</div>
-					</div>	
-				</div>
-				
-				<div class="row">
-					<div class="col-md-3">
+					</div>
+					
+			    </div>
+			    
+			    <div class="row">
+			         <div class="col-md-3">
 						<div class="form-group"> 
 						   <label>UF</label> 
-							<select ng-model="fornecedor.estados.id"
-							 id="selectEstados"
+							<select ng-model="vendedor.estados.id"
+							  id="selectEstados"
 							  class="form-control" onchange="javascript:carregarCidadesChrome(this);"> 
 							  <option value="">Selecione</option> 
 							  <option
@@ -113,10 +116,10 @@
 						</div>
 					</div>
 					
-					<div class="col-md-6">
+					<div class="col-md-5">
 						<div class="form-group"> 
 						   <label>Cidade</label> 
-							<select id="selectCidades" ng-model="fornecedor.cidades.id" 
+							<select id="selectCidades" ng-model="vendedor.cidades.id" 
 							class="form-control"> 
 							<option value="">Selecione</option>
 							  <option
@@ -125,49 +128,50 @@
 							</select>	
 						</div>
 					</div>
-					
-				</div>				
-
+			    </div>
+			    
 				<div class="row">
 					<div class="col-md-3">
 						<div class="form-group">
-							<label>Telefone</label> <input type="text" id="telefone"
-								ng-model="fornecedor.telefone" class="form-control border-input"
+							<label>Telefone</label> <input type="text" id="telefone" name="telefone"
+								ng-model="vendedor.telefone" class="form-control border-input"
 								placeholder="Telefone" required="required">
 
 						</div>
 					</div>
 					
-					<div class="col-md-6">
+					<div class="col-md-3">
 						<div class="form-group">
-							<label>Email</label> <input type="text" id="email"
-								ng-model="fornecedor.email" class="form-control border-input"
-								placeholder="E-mail">
+							<label>Celular</label> <input type="text" id="celular" name="celular"
+								ng-model="vendedor.celular" class="form-control border-input"
+								placeholder="Tel. Celular">
 
 						</div>
 					</div>					
 				</div>
 				
-				<div class="row">
-					<div class="col-md-4">
+				<div class="row">					
+					<div class="col-md-6">
 						<div class="form-group">
-							<label>Inscrição Estadual</label> 
-							<input type="number" class="form-control" id="inscricaoEstadual" name="inscricaoEstadual" ng-model="fornecedor.inscricaoEstadual" placeholder="Insrição Estadual">						
+							<label>E-mail</label> <input type="text"
+								ng-model="vendedor.email" class="form-control border-input"
+								placeholder="E-mail">
+
 						</div>
 					</div>
-			   </div>				
+				</div>
 				
 				<button type="submit" class="btn btn-info btn-fill btn-wd">Cadastrar</button>
-				<button type="submit" class="btn btn-info btn-fill btn-wd"
-					ng-click="$scope.fornecedor={}">Limpar</button>
+				<button type="button" class="btn btn-info btn-fill btn-wd"
+					    onclick="document.getElementById('formVendedor').reset();">Limpar</button>
 			</form>
 		</div>
 	</div>
+	
  <script type="text/javascript">
- 
-    $('#inscricaoEstadual').mask('99999999999');
+    $('#cpf').mask('999.999.999-99');
  	$('#telefone').mask('(99) 9999-9999');
- 	$('#cnpj').mask('99.999.999/9999-99');
+ 	$('#celular').mask('(99) 99999-9999');
  	$('#cep').mask('99.999-999');
  </script>	
 </html>

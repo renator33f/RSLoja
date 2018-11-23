@@ -1,7 +1,5 @@
 package angular.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,29 +11,27 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.ForeignKey;
 
 /**
- * Modelo que representa a tabela de Clientes do banco
+ * Modelo que representa a tabela de Vendedor do banco
  *
  */
 
 @Entity
-public class Cliente implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
+public class Vendedor {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String nome;
-
-	private String endereco;
 	
+	private String endereco;
+
 	private String bairro;
 
 	private String telefone;
 	
 	private String celular;
-	
+
 	private String email;
 
 	private String sexo; 
@@ -63,6 +59,7 @@ public class Cliente implements Serializable {
 	
 	@Column(columnDefinition="text")
 	private String foto;
+
 	
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
@@ -221,7 +218,7 @@ public class Cliente implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cliente other = (Cliente) obj;
+		Vendedor other = (Vendedor) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -229,6 +226,9 @@ public class Cliente implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
+	
+	
 
 }
-

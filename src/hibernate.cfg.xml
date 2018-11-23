@@ -31,6 +31,7 @@
 		<mapping class="angular.model.Pedido" />
 		<mapping class="angular.model.ItemPedido" />
 		<mapping class="angular.model.Genero" />
+		<mapping class="angular.model.Vendedor" />
 		
 		
 		

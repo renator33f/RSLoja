@@ -2,44 +2,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
-<h1>Lista de Livros</h1>
+<h1>Lista de Vendedores</h1>
 
 
-<a href="#livro/cadastro">Novo
+<a href="#vendedor/cadastro">Novo
 <img alt="Novo" src="resources/img/add-icon.png" border="0">
 </a>
 
 <br/>
 <br/>
-<label>Filtrar Livro <input class="form-control" type="text" ng-model="filtro"></label><br>
+<label>Filtrar Vendedor<input class="form-control" type="text" ng-model="filtro"></label><br>
 <br/>
 
-<div ng-controller="livroController" ng-init="listarLivros(1)">
+<div ng-controller="vendedorController" ng-init="listarVendedor(1)">
 
 	<div class="content table-responsive table-full-width">
 		<table class="table table-hover">
 			<thead>
 				<th>ID</th>
-				<th>Capa</th>
-				<th>Título</th>
-				<th>ISBN</th>
-				<th>Autor</th>
-				<th>Preço R$</th>
+				<th>Foto</th>
+				<th>Nome</th>
 				<th>Alterar</th>
 				<th>Excluir</th>
 			</thead>
 			<tbody>
-				<tr ng-repeat="livro in data | filter:filtro"> 
-					<td>{{livro.id}}</td>
-					<td><img src="{{livro.foto}}" style="width: 40px; height: 43px"/></td>
-					<td>{{livro.titulo}}</td>
-					<td>{{livro.isbn}}</td>
-					<td>{{livro.autor}}</td>
-					<td>{{livro.valor}}</td>
-					<td> <a href ng-click="editarLivro(livro.id);">Alterar
+				<tr ng-repeat="vendedor in data | filter:filtro"> 
+					<td>{{vendedor.id}}</td>
+					<td><img src="{{vendedor.foto}}" style="width: 40px; height: 43px"/></td>
+					<td>{{vendedor.titulo}}</td>
+					<td> <a href ng-click="editarVendedor(vendedor.id);">Alterar
 					 <img alt="Alterar" src="resources/img/edit-icon.png" border="0">
 					</a></td>
-					<td> <a href ng-click="removerLivro(livro.id);">Excluir
+					<td> <a href ng-click="removerVendedor(vendedor.id);">Excluir
 					 <img alt="Excluir" src="resources/img/delete-icon.png" border="0">
 					</a></td>
 					

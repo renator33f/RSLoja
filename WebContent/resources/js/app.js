@@ -36,8 +36,7 @@ app.config(function($routeProvider) {
 				controller : "fornecedorController",
 				templateUrl : "fornecedor/cadastro.html"
 			})// novo
-			
-			
+					
 			//--------------Livro---------------------
 				$routeProvider.when("/livrolist", {
 				controller : "livroController",
@@ -52,6 +51,21 @@ app.config(function($routeProvider) {
 			.when("/livro/cadastro", {
 				controller : "livroController",
 				templateUrl : "livro/cadastro.html"
+			})// novo
+			
+			//----------------Vendedor---------------
+			$routeProvider.when("/vendedorlist", {
+				controller : "vendedorController",
+				templateUrl : "vendedor/list.html"
+			})// listar
+			.when("/vendedoredit/:id", {
+				controller : "vendedorController",
+				templateUrl : "vendedor/cadastro.html"
+			})// editar
+			
+			.when("/vendedor/cadastro", {
+				controller : "vendedorController",
+				templateUrl : "vendedor/cadastro.html"
 			})// novo
 			
 			//----------------LOJA---------------
@@ -73,12 +87,24 @@ app.config(function($routeProvider) {
 				controller : "lojaController",
 				templateUrl : "loja/pedidos.html"
 			})
+			.when("/loja/pedidoconsulta/:id", {
+				controller : "lojaController",
+				templateUrl : "loja/pedidoconsulta.html"
+			})
+			
+			.when("/loja/detalhepedido/:id", {
+				controller : "lojaController",
+				templateUrl : "loja/detalhepedido.html"
+			})
 			
 			.when("/grafico/media_pedido", {
 				controller : "lojaController",
 				templateUrl : "grafico/media_pedido.html"
 			})
-			
+		/*	.when("/loja/onlinef", {
+				controller : "lojaController",
+				templateUrl : "loja/onlinef.html"
+			}) */			
 			.otherwise({
 				redirectTo : "/"
 			});

@@ -25,6 +25,7 @@ import angular.model.PedidoBean;
 @RequestMapping("/imprimirPedido")
 public class FileDownloadController {
 	
+	/***RESPONSÁVEL PELA IMPRESSAO\CONSULTA DO RELATORIO DO PEDIDO EM PDF***/
 	
 	@Autowired
 	private ReportUtil reportUtil;
@@ -68,8 +69,8 @@ public class FileDownloadController {
 		
 		filePath = reportUtil.geraRelatorio(dados,
 				new HashMap(),
-				"rel_pedido", 
-				"rel_pedido", 
+				"re_pedido1", 
+				"re_pedido1", 
 				context);
 		
 		//Construir o caminho completo absoluto do arquivo

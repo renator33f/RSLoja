@@ -95,6 +95,11 @@
 	<bean id="reportUtil" name="reportUtil"
 		class="angular.controller.ReportUtil">
 	</bean>
+	
+	<bean id="vendedorController" name="vendedorController"
+		class="angular.controller.VendedorController">
+		<constructor-arg value="angular.model.Vendedor" />
+	</bean>
       
 </beans>
 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="re_pedido1_subreport" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f40c8bf4-1c26-42c7-a57e-1e3227caa1b4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="quantidade" class="java.lang.Long">
+		<fieldDescription><![CDATA[quantidade]]></fieldDescription>
+	</field>
+	<field name="precounit" class="java.lang.String">
+		<fieldDescription><![CDATA[precounit]]></fieldDescription>
+	</field>
+	<field name="pedido" class="angular.model.Pedido">
+		<fieldDescription><![CDATA[pedido]]></fieldDescription>
+	</field>
+	<field name="livro" class="angular.model.Livro">
+		<fieldDescription><![CDATA[livro]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="55" height="20" uuid="ce208d0e-e302-433a-ab66-fb757d1ee4ed"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="55" y="0" width="60" height="20" uuid="473665b1-aa2e-4ea7-9d8f-28b91f87459b"/>
+				<textFieldExpression><![CDATA[$F{livro}.getId()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="489" y="0" width="66" height="20" uuid="644f2c56-6e39-4c17-b656-a333b9e48cb1"/>
+				<textFieldExpression><![CDATA[$F{precounit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="408" y="0" width="81" height="20" uuid="3620679d-c099-4072-b39a-d6b9e102877d"/>
+				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="0" width="293" height="20" uuid="9b691d33-6bf8-4801-ba03-e18394c02dce"/>
+				<textFieldExpression><![CDATA[$F{livro}.getTitulo()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

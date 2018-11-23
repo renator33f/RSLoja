@@ -1,5 +1,66 @@
-// configrações loja de livros
+//configrações loja de livros
 app.controller("lojaController", function($scope, $http, $location, $routeParams) {
+	
+	if ($routeParams.id != null && $routeParams.id != undefined
+			&& $routeParams.id != ''){// se estiver consultando o pedido
+		// entra pra consultar
+		$http.get("pedido/buscarpedido/" + $routeParams.id).success(function(response) {
+			$scope.pedido = response;
+			
+		}).error(function(data, status, headers, config) {
+			erro("Error: " + status);
+		});
+		
+	}else { // novo pedido
+		$scope.pedido = {};
+	}
+	
+	/// Consultar o Pedido
+	$scope.editarPedido = function(id) {
+		$location.path('loja/pedidoconsulta/' + id);
+	};
+	
+	
+	
+	
+	
+	/////////////////////////////////////////////////
+	
+	if ($routeParams.id != null && $routeParams.id != undefined
+			&& $routeParams.id != ''){// se estiver consultando o item do pedido
+		// entra pra consultar
+		$http.get("itempedido/buscaritempedido/" + $routeParams.id).success(function(response) {
+			$scope.itemPedido = response;
+			
+		}).error(function(data, status, headers, config) {
+			erro("Error: " + status);
+		});
+		
+	}else { // novo item pedido
+		$scope.itemPedido = {};
+	}
+	
+	/// Consultar Detalhe do Pedido
+	$scope.editarItemPedido = function(id) {
+		$location.path('loja/detalhepedido/' + id);
+	};
+	/////////////////////////////////////////////////
+	
+	$scope.listarItemPedidos = function (id) {
+		$http.get("itempedido/listar/" + id).success(function(response) {
+			$scope.itemPedidosData = response;
+		}).error(function(response) {
+			erro("Error: " + response);
+		});
+	};	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	$scope.listarPedidos = function () {
@@ -8,8 +69,7 @@ app.controller("lojaController", function($scope, $http, $location, $routeParams
 		}).error(function(response) {
 			erro("Error: " + response);
 		});
-	};
-	
+	};	
 	
 	$scope.removerPedido = function (codPedido) {
 		$http.delete("pedido/deletar/"+codPedido).success(function(response) {
@@ -70,13 +130,38 @@ app.controller("lojaController", function($scope, $http, $location, $routeParams
 		});
 		
 	}else {
-		$scope.carrinhoLivro = new Array();
+		$scope.carrinhoLivro = new Array();		
 	}
 	
+	// Adicionar Livro ao carrinho
 	$scope.addLivro = function (livroid) {
 		$scope.carrinhoLivro.push(livroid);
 		
 	};
+	
+	/*
+    if ($routeParams.itens != null && $routeParams.itens.length > 0){
+		
+		$http.get("itempedido/processarf/"+ $routeParams.itens).success(function(response) {
+			
+			$scope.itensCarrinho = response;
+			$scope.pedidoObjeto = response[0].pedido;
+			
+		}).error(function(response) {
+			erro("Error: " + response);
+		});
+		
+	}else {
+		$scope.carrinhoFilme = new Array();		
+	}	
+	
+	// Adicionar Filme ao carrinho
+	$scope.addFilme = function (filmeid) {
+		$scope.carrinhoFilme.push(filmeid);
+		
+	};
+	*/
+	
 	
 	$scope.recalculo = function (quantidade, livro) {
 		var valorTotal = new Number();
@@ -117,6 +202,7 @@ app.controller("lojaController", function($scope, $http, $location, $routeParams
 		$location.path('loja/intensLoja/' + $scope.carrinhoLivro);
 	};
 	
+	
 	// listar todos os livros
 	$scope.listarLivros = function(numeroPagina) {
 		$scope.numeroPagina = numeroPagina;
@@ -134,8 +220,41 @@ app.controller("lojaController", function($scope, $http, $location, $routeParams
 		}).error(function(response) {
 			erro("Error: " + response);
 		});
-		
 	};
+	
+	
+	// listar todos os filmes
+	$scope.listarFilmes = function(numeroPagina) {
+		$scope.numeroPagina = numeroPagina;
+		$http.get("filme/listar/" + numeroPagina).success(function(response) {
+			$scope.data = response;
+			
+			//---------Inicio total página----------
+				$http.get("filme/totalPagina").success(function(response) {
+					$scope.totalPagina = response;
+				}).error(function(response) {
+					erro("Error: " + response);
+				});
+			//---------Fim total página----------
+			
+		}).error(function(response) {
+			erro("Error: " + response);
+		});
+	};
+	
+	
+	$scope.proximo = function () {
+		if (new Number($scope.numeroPagina) < new Number($scope.totalPagina)) {
+		 $scope.listarFilmes(new Number($scope.numeroPagina + 1));
+		} 
+	};
+	
+	$scope.anterior = function () {
+		if (new Number($scope.numeroPagina) > 1) {
+		  $scope.listarFilmes(new Number($scope.numeroPagina - 1));
+		}
+	};
+	
 	
 	$scope.proximo = function () {
 		if (new Number($scope.numeroPagina) < new Number($scope.totalPagina)) {

@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +19,7 @@ import com.google.gson.Gson;
 
 import angular.dao.DaoImplementacao;
 import angular.dao.DaoInterface;
+import angular.model.Cliente;
 import angular.model.ItemPedido;
 import angular.model.Pedido;
 import angular.model.PedidoBean;
@@ -32,7 +35,7 @@ public class PedidoController extends DaoImplementacao<Pedido> implements
 	public PedidoController(Class<Pedido> persistenceClass) {
 		super(persistenceClass);
 	}
-
+	
 	@RequestMapping(value = "grafico", method = RequestMethod.GET)
 	public @ResponseBody String grafico() {
 
@@ -90,6 +93,7 @@ public class PedidoController extends DaoImplementacao<Pedido> implements
 		return new Gson().toJson(super.lista());
 	}
 
+	/***Deleta todos itens do pedido antes de deletar o pedido***/
 	@RequestMapping(value = "deletar/{codPedido}", method = RequestMethod.DELETE)
 	public @ResponseBody
 	String deletar(@PathVariable("codPedido") String codPedido)
@@ -104,5 +108,24 @@ public class PedidoController extends DaoImplementacao<Pedido> implements
 		super.deletar(loadObjeto(Long.parseLong(codPedido)));
 		return new Gson().toJson(super.lista());
 	}
+	 
+	/**
+	 * Consulta e retorna o pedido com o codigo informado
+	 * @param codPedido
+	 * @return JSON pedido pesquisado
+	 * @throws Exception
+	 */
+	@RequestMapping(value="buscarpedido/{codPedido}", method=RequestMethod.GET)
+	public  @ResponseBody byte[] buscarPedido (@PathVariable("codPedido") String codPedido) throws Exception {
+		Pedido objeto = super.loadObjeto(Long.parseLong(codPedido));
+		if (objeto == null) {
+			return "{}".getBytes("UTF-8");
+		}
+		return new Gson().toJson(objeto).getBytes("UTF-8");
+	}
+	
+	
+	
+	
 
 }

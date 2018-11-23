@@ -18,12 +18,20 @@ public class ItemPedido {
 	@ManyToOne
 	@ForeignKey(name = "livro_fk")
 	private Livro livro;
-
+	
+	/*
+	@ManyToOne
+	@ForeignKey(name = "filme_fk")
+	private Filme filme;
+    */
+	
 	@ManyToOne
 	@ForeignKey(name = "pedido_fk")
 	private Pedido pedido;
 
 	private Long quantidade;
+	
+	private String precounit;
 
 	public Long getId() {
 		return id;
@@ -56,7 +64,25 @@ public class ItemPedido {
 	public void setQuantidade(Long quantidade) {
 		this.quantidade = quantidade;
 	}
+	
+	public String getPrecounit() {
+		return precounit;
+	}
 
+	public void setPrecounit(String precounit) {
+		this.precounit = precounit;
+	}
+
+	/*
+	public Filme getFilme() {
+		return filme;
+	}
+
+	public void setFilme(Filme filme) {
+		this.filme = filme;
+	}
+	*/
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -81,5 +107,6 @@ public class ItemPedido {
 			return false;
 		return true;
 	}
+	
 
 }

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="re_pedido1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d4ff02b7-fc34-4bf4-818c-b9e789189ccb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace\\rsloja\\src\\relatorios\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="itens" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[itens]]></fieldDescription>
+	</field>
+	<field name="pedido" class="angular.model.Pedido">
+		<fieldDescription><![CDATA[pedido]]></fieldDescription>
+	</field>
+	<title>
+		<band height="113" splitType="Stretch">
+			<textField>
+				<reportElement x="46" y="5" width="100" height="20" uuid="3020513c-1c7e-4463-8a75-7a3215f38cf4"/>
+				<textFieldExpression><![CDATA[$F{pedido}.getId()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="5" width="44" height="20" uuid="531368c6-cdab-4a2e-a5e0-20aabb566db2"/>
+				<text><![CDATA[Pedido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="29" width="44" height="20" uuid="69b6bb07-39ed-4664-8dcb-6c2fa393aefc"/>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="123" y="29" width="330" height="20" uuid="2b165306-adc5-4b8f-8c65-48aa8e500bcf"/>
+				<textFieldExpression><![CDATA[$F{pedido}.getCliente().getNome()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="53" width="40" height="20" uuid="c1938e37-bb87-4471-91e4-d72701795ac1"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="46" y="53" width="90" height="20" uuid="8395dd37-f03c-40d5-a0c7-bca98fe6f69b"/>
+				<textFieldExpression><![CDATA[$F{pedido}.getValorTotal()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="444" y="5" width="100" height="20" uuid="a204f66a-9435-460f-91e5-2b9350fe92bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[RSLoja]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="46" y="29" width="58" height="20" uuid="e2384d0a-e60b-4c04-ad17-d454c0ea3ff1"/>
+				<textFieldExpression><![CDATA[$F{pedido}.getCliente().getId()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="104" y="29" width="19" height="20" uuid="6379ff43-bafe-48d6-8139-ea6666e65d1d"/>
+				<text><![CDATA[   -]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="84" width="549" height="1" uuid="a514a006-b783-4956-8f99-eb32b7212d31"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="88" width="42" height="20" uuid="cfb5cf39-aca3-4783-9914-01e03674d467"/>
+				<text><![CDATA[Seq]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="55" y="88" width="42" height="20" uuid="888db3e7-0d74-4bf5-bf74-c453cf9e8ffc"/>
+				<text><![CDATA[Item]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="88" width="64" height="20" uuid="224b1408-3c39-47ba-8c6e-3351c6d75a50"/>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="88" width="64" height="20" uuid="cadbb2d1-c52e-408f-916e-35ac6c8f2a97"/>
+				<text><![CDATA[Qtde]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="489" y="88" width="64" height="20" uuid="30920d0f-715b-4c38-a839-82589bd946f3"/>
+				<text><![CDATA[Preço R$]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="108" width="549" height="1" uuid="35bf454c-ce41-402a-bd3c-85ca5b693802"/>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="553" height="22" uuid="c6fab484-fac9-4afc-9c52-4cef8d79a025"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{itens})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "re_pedido1_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

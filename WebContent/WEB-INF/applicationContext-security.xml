@@ -16,6 +16,7 @@
 
 		<intercept-url pattern="/cliente/**" access="isAuthenticated() and hasAnyRole('ADMIN')"/>
 		<intercept-url pattern="/fornecedor/**" access="isAuthenticated() and hasAnyRole('ADMIN')"/>
+		<intercept-url pattern="/vendedor/**" access="isAuthenticated() and hasAnyRole('ADMIN')"/>
 		<intercept-url pattern="/grafico/**" access="isAuthenticated() and hasAnyRole('ADMIN')"/>
 		<intercept-url pattern="/livro/**" access="isAuthenticated() and hasAnyRole('ADMIN')"/>
 		<intercept-url pattern="/loja/**" access="isAuthenticated() and hasAnyRole('ADMIN')"/>

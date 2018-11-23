@@ -64,7 +64,7 @@
 				<div class="row">
 					<div class="col-md-5">
 						<div class="form-group">
-							<label>ISBN</label> <input type="number" id="isbn"
+							<label>ISBN</label> <input type="number" id="isbn" name="isbn"
 								ng-model="livro.isbn" class="form-control border-input"
 								placeholder="ISBN" required="required">
 
@@ -160,6 +160,7 @@
 	</div>
 	<script type="text/javascript">
 		
+	    $('#isbn').mask('9999999999999');
 		
 		$("#valor").maskMoney({
 			prefix : 'R$ ',

@@ -21,6 +21,8 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import org.springframework.stereotype.Component;
 @Component
 public class ReportUtil implements Serializable{
+	
+	/***RESPONSÁVEL PELA IMPRESSAO DO RELATORIO DO PEDIDO EM PDF - PARAMETROS JASPERSOFT IREPORT***/
 
 	private static final long serialVersionUID = 1L;
 	

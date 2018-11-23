@@ -17,6 +17,7 @@
 				<th>N°</th>
 				<th>Cliente</th>
 				<th>R$</th>
+				<th>Consultar</th>
 				<th>Excluir</th>
 				<th>Imprimir</th>
 			</thead>
@@ -25,6 +26,9 @@
 					<td>{{pedido.id}}</td>
 					<td>{{pedido.cliente.nome}}</td>
 					<td>{{pedido.valorTotal}}</td>
+					<td> <a href ng-click="editarPedido(pedido.id);">
+					 <img alt="Consultar" src="resources/img/list-icon.png" border="0">
+					</a></td>
 					<td> <a href ng-click="removerPedido(pedido.id);">
 					 <img alt="Excluir" src="resources/img/delete-icon.png" border="0">
 					</a></td>

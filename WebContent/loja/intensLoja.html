@@ -53,7 +53,7 @@
 			<tbody>
 				<tr ng-repeat="item in itensCarrinho | filter:filtro"> 
 					<td>{{item.livro.id}}</td>
-					<td><img src="" style="width: 80px; height: 100px"/></td>
+					<td><img src="{{item.livro.foto}}" style="width: 80px; height: 100px"/></td>
 					<td>{{item.livro.titulo}}</td>
 					<td> <input type="number" value="{{item.quantidade}}" ng-change="recalculo(item.quantidade, item.livro.id);" ng-model="item.quantidade"/></td>
 					<td>{{item.livro.valor}}</td>
@@ -61,7 +61,8 @@
 					 <img alt="Excluir" src="resources/img/delete-icon.png" border="0">
 					</a></td>
 				</tr>
-			</tbody>
+			</tbody>			
+			
 		</table>
 		<a href ng-click="finalizarPedido();">
 		 <img alt="Finalizar" border="0"

@@ -24,6 +24,25 @@
 		</td>
   </tr>
  </table>
+ 
+ <br/>
+ <br/>
+  
+ <label>Pesquisar Vendedor <input class="form-control" type="text" ng-model="filtroVendedor"></label>
+ <button type="button" class="btn btn-info btn-fill btn-wd" ng-click="buscarVendedorNome();">Buscar</button>
+ <table class="table table-hover">
+  <tr ng-repeat="vendedor in vendedoresPesquisa">
+  	<td>{{vendedor.id}}</td>
+  	<td>{{vendedor.nome}}</td>
+  	<td>
+  	 <a href ng-click="adicionarVendedorCarrinho(vendedor);">Adicionar
+					 <img alt="Adicionar Vendedor" title="Adicionar Vendedor" 
+					 src="resources/img/add-icon.png" border="0">
+					</a>
+		</td>
+  </tr>
+ </table>
+ 
 <br/>
 <br/>
 <br/>
@@ -32,6 +51,11 @@
 <input class="form-control" style="max-width: 100px;" ng-model="pedidoObjeto.cliente.id" value="{{pedidoObjeto.cliente.id}}" readonly="readonly" type="text" id="idCliente"/>
 <br>
 <input class="form-control" readonly="readonly" ng-model="pedidoObjeto.cliente.nome" value="{{pedidoObjeto.cliente.nome}}" type="text" id="nomeCliente"/>
+<br>
+<label>Vendedor</label>
+<input class="form-control" style="max-width: 100px;" ng-model="pedidoObjeto.vendedor.id" value="{{pedidoObjeto.vendedor.id}}" readonly="readonly" type="text" id="idVendedor"/>
+<br>
+<input class="form-control" readonly="readonly" ng-model="pedidoObjeto.vendedor.nome" value="{{pedidoObjeto.Vendedor.nome}}" type="text" id="nomeVendedor"/>
 <br>
 <br/>
 <label>Filtro Livros<input class="form-control" type="text" ng-model="filtro"></label>

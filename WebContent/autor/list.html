@@ -1,0 +1,51 @@
+<html ng-app="rsloja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<h1>Lista de Autores</h1>
+
+
+<a href="#autor/cadastro">Novo
+<img alt="Novo" src="resources/img/add-icon.png" border="0">
+</a>
+
+<br/>
+<br/>
+<label>Filtrar Autor<input class="form-control" type="text" ng-model="filtro"></label><br>
+<br/>
+
+<div ng-controller="autorController" ng-init="listarAutores(1)">
+
+	<div class="content table-responsive table-full-width">
+		<table class="table table-hover">
+			<thead>
+				<th>ID</th>
+				<th>Foto</th>
+				<th>Nome Abrev</th>
+				<th>Nome</th>
+				<th>Alterar</th>
+				<th>Excluir</th>				
+			</thead>
+			<tbody>
+				<tr ng-repeat="autor in data | filter:filtro"> 
+					<td>{{autor.id}}</td>
+					<td><img src="{{autor.foto}}" style="width: 40px; height: 43px"/></td>
+					<td>{{autor.nomeabrev}}</td>
+					<td>{{autor.nome}}</td>
+					<td> <a href ng-click="editarAutor(autor.id);">Alterar
+					 <img alt="Editar" src="resources/img/edit-icon.png" border="0">
+					</a></td>
+					<td> <a href ng-click="removerAutor(autor.id);">Excluir
+					 <img alt="Remover" src="resources/img/delete-icon.png" border="0">
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="text-center" ng-hide="ocultarNavegacao">
+		   <button type="button" class="btn btn-info btn-fill btn-wd" ng-click="anterior();">Anterior</button>
+		   <button type="button" class="btn btn-info btn-fill btn-wd" ng-click="proximo();">Próximo</button>
+		</div>   
+	</div>
+
+</div>
+</html>

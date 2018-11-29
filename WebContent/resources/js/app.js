@@ -68,6 +68,22 @@ app.config(function($routeProvider) {
 				templateUrl : "vendedor/cadastro.html"
 			})// novo
 			
+			//----------------Autor---------------
+			$routeProvider.when("/autorlist", {
+				controller : "autorController",
+				templateUrl : "autor/list.html"
+			})// listar
+			
+			.when("/autoredit/:id", {
+				controller : "autorController",
+				templateUrl : "autor/cadastro.html"
+			})// editar
+			
+			.when("/autor/cadastro", {
+				controller : "autorController",
+				templateUrl : "autor/cadastro.html"
+			})// novo
+			
 			//----------------LOJA---------------
 			.when("/loja/online", {
 				controller : "lojaController",
@@ -92,19 +108,11 @@ app.config(function($routeProvider) {
 				templateUrl : "loja/pedidoconsulta.html"
 			})
 			
-			.when("/loja/detalhepedido/:id", {
-				controller : "lojaController",
-				templateUrl : "loja/detalhepedido.html"
-			})
-			
 			.when("/grafico/media_pedido", {
 				controller : "lojaController",
 				templateUrl : "grafico/media_pedido.html"
 			})
-		/*	.when("/loja/onlinef", {
-				controller : "lojaController",
-				templateUrl : "loja/onlinef.html"
-			}) */			
+			
 			.otherwise({
 				redirectTo : "/"
 			});
@@ -367,6 +375,237 @@ app.controller('clienteController', function($scope, $http, $location, $routePar
 	};
 	
 });
+
+
+
+//configurações do controller de vendedor
+app.controller('vendedorController', function($scope, $http, $location, $routeParams) {
+	
+	if ($routeParams.id != null && $routeParams.id != undefined
+			&& $routeParams.id != ''){// se estiver editando o vendedor
+		// entra pra editar
+		$http.get("vendedor/buscarvendedor/" + $routeParams.id).success(function(response) {
+			$scope.vendedor = response;
+			
+			document.getElementById("imagemVendedor").src = $scope.vendedor.foto;
+			//------------------ carrega estados e cidades do vendedor em edição
+			setTimeout(function () {
+				$("#selectEstados").prop('selectedIndex', (new Number($scope.vendedor.estados.id) + 1));
+				
+				$http.get("cidades/listar/" + $scope.vendedor.estados.id).success(function(response) {
+					$scope.cidades = response;
+					setTimeout(function () {
+						$("#selectCidades").prop('selectedIndex', buscarKeyJson(response, 'id', $scope.vendedor.cidades.id));
+					}, 1000);
+					
+				}).error(function(data, status, headers, config) {
+					erro("Error: " + status);
+				});
+			
+			}, 1000);
+			//----------------------
+			
+		}).error(function(data, status, headers, config) {
+			erro("Error: " + status);
+		});
+		
+	}else { // novo vendedor
+		$scope.vendedor = {};
+	}
+	
+	
+	$scope.editarVendedor = function(id) {
+		$location.path('vendedoredit/' + id);
+	};
+	
+	
+	// Responsável por salvar o vendedor ou editar os dados
+	$scope.salvarVendedor = function() {
+				$scope.vendedor.foto = document.getElementById("imagemVendedor").getAttribute("src");
+				
+				$http.post("vendedor/salvar", $scope.vendedor).success(function(response) {
+					$scope.vendedor = {};
+					document.getElementById("imagemVendedor").src = '';
+					sucesso("Gravado com sucesso!");
+				}).error(function(response) {
+					erro("Error: " + response);
+				});
+  
+      };
+          
+          
+	// listar todos os vendedores
+	$scope.listarVendedores = function(numeroPagina) {
+		$scope.numeroPagina = numeroPagina;
+		$http.get("vendedor/listar/" + numeroPagina).success(function(response) {
+			
+			if (response == null || response == '') {
+				$scope.ocultarNavegacao = true;
+			}else {
+				$scope.ocultarNavegacao = false;
+			}
+			
+			$scope.data = response;
+			
+			//---------Inicio total página----------
+				$http.get("vendedor/totalPagina").success(function(response) {
+					$scope.totalPagina = response;
+				}).error(function(response) {
+					erro("Error: " + response);
+				});
+			//---------Fim total página----------
+			
+		}).error(function(response) {
+			erro("Error: " + response);
+		});
+		
+	};
+	
+	$scope.proximo = function () {
+		if (new Number($scope.numeroPagina) < new Number($scope.totalPagina)) {
+		 $scope.listarVendedores(new Number($scope.numeroPagina + 1));
+		} 
+	};
+	
+	$scope.anterior = function () {
+		if (new Number($scope.numeroPagina) > 1) {
+		  $scope.listarVendedores(new Number($scope.numeroPagina - 1));
+		}
+	};
+	
+	// remover vendedor passado como parametro
+	$scope.removerVendedor = function(codVendedor) {
+		$http.delete("vendedor/deletar/" + codVendedor).success(function(response) {
+			$scope.listarVendedores($scope.numeroPagina);
+			sucesso("Removido com sucesso!"); 
+		}).error(function(data, status, headers, config) {
+			erro("Error: " + status);
+		});
+	};
+	
+	
+	// carrega as cidades de acordo com o estado passado por parametro
+	$scope.carregarCidades = function(estado) {
+		if (identific_nav() != 'chrome') {// executa se for diferente do chrome
+			$http.get("cidades/listar/" + estado.id).success(function(response) {
+				$scope.cidades = response;
+			}).error(function(data, status, headers, config) {
+				erro("Error: " + status);
+			});
+	  }
+	};
+	
+	// carrega os estados ao iniciar a tela de cadastro 
+	$scope.carregarEstados = function() {
+		$scope.dataEstados = [{}];
+		$http.get("estados/listar").success(function(response) {
+			$scope.dataEstados = response;
+		}).error(function(response) {
+			erro("Error: " + response);
+		});
+	};
+	
+});
+
+
+
+//configurações do controller de autores
+app.controller('autorController', function($scope, $http, $location, $routeParams) {
+	
+	if ($routeParams.id != null && $routeParams.id != undefined
+			&& $routeParams.id != ''){// se estiver editando o autor
+		// entra pra editar
+		$http.get("autor/buscarautor/" + $routeParams.id).success(function(response) {
+			$scope.autor = response;
+			
+			document.getElementById("imagemAutor").src = $scope.autor.foto;
+			
+		}).error(function(data, status, headers, config) {
+			erro("Error: " + status);
+		});
+		
+	}else { // novo autor
+		$scope.autor = {};
+	}
+	
+	
+	$scope.editarAutor = function(id) {
+		$location.path('autoredit/' + id);
+	};
+	
+	
+	// Responsável por salvar o autor ou editar os dados
+	$scope.salvarAutor = function() {
+				$scope.autor.foto = document.getElementById("imagemAutor").getAttribute("src");
+		     //	$scope.autor.datanascimento = new Date('1988-09-09');
+				
+				$http.post("autor/salvar", $scope.autor).success(function(response) {
+					$scope.autor = {};
+			 //		$scope.autor.datanascimento = new Date();
+					document.getElementById("imagemAutor").src = '';
+					
+					
+					sucesso("Gravado com sucesso!");
+				}).error(function(response) {
+					erro("Error: " + response);
+				});
+  
+      };
+          
+          
+	// listar todos os autores
+	$scope.listarAutores = function(numeroPagina) {
+		$scope.numeroPagina = numeroPagina;
+		$http.get("autor/listar/" + numeroPagina).success(function(response) {
+			
+			if (response == null || response == '') {
+				$scope.ocultarNavegacao = true;
+			}else {
+				$scope.ocultarNavegacao = false;
+			}
+			
+			$scope.data = response;
+			
+			//---------Inicio total página----------
+				$http.get("autor/totalPagina").success(function(response) {
+					$scope.totalPagina = response;
+				}).error(function(response) {
+					erro("Error: " + response);
+				});
+			//---------Fim total página----------
+			
+		}).error(function(response) {
+			erro("Error: " + response);
+		});
+		
+	};
+	
+	$scope.proximo = function () {
+		if (new Number($scope.numeroPagina) < new Number($scope.totalPagina)) {
+		 $scope.listarAutores(new Number($scope.numeroPagina + 1));
+		} 
+	};
+	
+	$scope.anterior = function () {
+		if (new Number($scope.numeroPagina) > 1) {
+		  $scope.listarAutores(new Number($scope.numeroPagina - 1));
+		}
+	};
+	
+	// remover autor passado como parametro
+	$scope.removerAutor = function(codAutor) {
+		$http.delete("autor/deletar/" + codAutor).success(function(response) {
+			$scope.listarAutores($scope.numeroPagina);
+			sucesso("Removido com sucesso!"); 
+		}).error(function(data, status, headers, config) {
+			erro("Error: " + status);
+		});
+	};
+	
+	
+});
+
+
 
 
 

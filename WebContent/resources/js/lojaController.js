@@ -21,31 +21,6 @@ app.controller("lojaController", function($scope, $http, $location, $routeParams
 	};
 	
 	
-	
-	
-	
-	/////////////////////////////////////////////////
-	
-	if ($routeParams.id != null && $routeParams.id != undefined
-			&& $routeParams.id != ''){// se estiver consultando o item do pedido
-		// entra pra consultar
-		$http.get("itempedido/buscaritempedido/" + $routeParams.id).success(function(response) {
-			$scope.itemPedido = response;
-			
-		}).error(function(data, status, headers, config) {
-			erro("Error: " + status);
-		});
-		
-	}else { // novo item pedido
-		$scope.itemPedido = {};
-	}
-	
-	/// Consultar Detalhe do Pedido
-	$scope.editarItemPedido = function(id) {
-		$location.path('loja/detalhepedido/' + id);
-	};
-	/////////////////////////////////////////////////
-	
 	$scope.listarItemPedidos = function (id) {
 		$http.get("itempedido/listar/" + id).success(function(response) {
 			$scope.itemPedidosData = response;
@@ -87,6 +62,7 @@ app.controller("lojaController", function($scope, $http, $location, $routeParams
 	$scope.finalizarPedido = function () {
 
 		$scope.pedidoObjeto.cliente = $scope.clienteAdiconado;
+		$scope.pedidoObjeto.vendedor = $scope.vendedorAdiconado;
 		
 		$http.post("pedido/finalizar", {"pedido" : $scope.pedidoObjeto,
 			"itens" : $scope.itensCarrinho}).success(function(response) {
@@ -102,6 +78,7 @@ app.controller("lojaController", function($scope, $http, $location, $routeParams
 	};
 	
 	
+	// Buscar e adicionar cliente ao pedido
 	$scope.buscarClienteNome = function () {
 		$http.get("cliente/buscarnome/" + $scope.filtroCliente).success(function(response) {
 			$scope.clientesPesquisa = response;
@@ -116,6 +93,24 @@ app.controller("lojaController", function($scope, $http, $location, $routeParams
 		$scope.clientesPesquisa = {};
 		$scope.filtroCliente = "";
 	};
+	
+	
+	// Buscar e adicionar vendedor ao pedido
+	$scope.buscarVendedorNome = function () {
+		$http.get("vendedor/buscarnome/" + $scope.filtroVendedor).success(function(response) {
+			$scope.vendedoresPesquisa = response;
+		}).error(function(response) {
+			erro("Error: " + response);
+		});
+	};
+	
+	$scope.adicionarVendedorCarrinho = function (vendedor) {
+		$scope.pedidoObjeto.vendedor = vendedor;
+		$scope.vendedorAdiconado = vendedor;
+		$scope.vendedoresPesquisa = {};
+		$scope.filtroVendedor = "";
+	};
+	
 	
 	
 	if ($routeParams.itens != null && $routeParams.itens.length > 0){
@@ -222,7 +217,7 @@ app.controller("lojaController", function($scope, $http, $location, $routeParams
 		});
 	};
 	
-	
+	/*
 	// listar todos os filmes
 	$scope.listarFilmes = function(numeroPagina) {
 		$scope.numeroPagina = numeroPagina;
@@ -253,14 +248,14 @@ app.controller("lojaController", function($scope, $http, $location, $routeParams
 		if (new Number($scope.numeroPagina) > 1) {
 		  $scope.listarFilmes(new Number($scope.numeroPagina - 1));
 		}
-	};
+	}; */
 	
 	
 	$scope.proximo = function () {
 		if (new Number($scope.numeroPagina) < new Number($scope.totalPagina)) {
 		 $scope.listarLivros(new Number($scope.numeroPagina + 1));
 		} 
-	}; 
+	};
 	
 	$scope.anterior = function () {
 		if (new Number($scope.numeroPagina) > 1) {

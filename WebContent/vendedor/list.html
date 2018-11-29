@@ -14,7 +14,7 @@
 <label>Filtrar Vendedor<input class="form-control" type="text" ng-model="filtro"></label><br>
 <br/>
 
-<div ng-controller="vendedorController" ng-init="listarVendedor(1)">
+<div ng-controller="vendedorController" ng-init="listarVendedores(1)">
 
 	<div class="content table-responsive table-full-width">
 		<table class="table table-hover">
@@ -29,7 +29,7 @@
 				<tr ng-repeat="vendedor in data | filter:filtro"> 
 					<td>{{vendedor.id}}</td>
 					<td><img src="{{vendedor.foto}}" style="width: 40px; height: 43px"/></td>
-					<td>{{vendedor.titulo}}</td>
+					<td>{{vendedor.nome}}</td>
 					<td> <a href ng-click="editarVendedor(vendedor.id);">Alterar
 					 <img alt="Alterar" src="resources/img/edit-icon.png" border="0">
 					</a></td>

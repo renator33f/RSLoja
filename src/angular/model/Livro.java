@@ -1,11 +1,18 @@
 package angular.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ForeignKey;
@@ -46,6 +53,21 @@ public class Livro {
 	
 	private String valor = "";
 	
+	@ManyToMany
+	@JoinTable(name = "AutorLivro",
+	joinColumns = @JoinColumn(name = "livro_id"),
+	inverseJoinColumns = @JoinColumn(name = "autor_id"))
+	private List<Autor> autores = new ArrayList<>();
+	
+	
+	
+	public List getAutores() {
+		return autores;
+	}
+	
+	public void setAutores(List autores) {
+		this.autores = autores;		
+	}	
 	
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;

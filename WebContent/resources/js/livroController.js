@@ -25,7 +25,19 @@ app.controller('livroController', function($scope, $http, $location, $routeParam
 									
 				
 				}, 1000);
-				//----------------------			
+				//----------------------	
+				
+				$http.get("autor/listartodos").success(function(response) {
+					$scope.autoresList = response;
+					setTimeout(function () {
+						$("#selectAutor").prop('selectedIndex', buscarKeyJson(response, 'id', $scope.livro.autorlivro.autor_id));
+					}, 1000);
+					
+				}).error(function(data, status, headers, config) {
+					erro("Error: " + status);
+				});
+				
+				
 			
 		}).error(function(data, status, headers, config) {
 			erro("Error: " + status);
@@ -117,5 +129,19 @@ app.controller('livroController', function($scope, $http, $location, $routeParam
 			erro("Error: " + response);
 		});
 	};	
+	
+	
+	$scope.listarAutores = function() {
+		$http.get("autor/listartodos").success(function(response) {
+			$scope.autoresList = response;
+		}).error(function(data, status, headers, config) {
+			erro("Error: " + status);
+		});
+	};
+	
+	
+	
+	
+	
 	
 });

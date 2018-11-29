@@ -82,6 +82,22 @@
 			<line>
 				<reportElement x="4" y="108" width="549" height="1" uuid="35bf454c-ce41-402a-bd3c-85ca5b693802"/>
 			</line>
+			<staticText>
+				<reportElement x="267" y="53" width="55" height="20" uuid="0551208e-8ffc-4171-bcaa-9fbf3f2c8dd3"/>
+				<text><![CDATA[Vendedor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="322" y="53" width="58" height="20" uuid="39e2cdd2-150d-42c3-87dc-5d1eea76a4fc"/>
+				<textFieldExpression><![CDATA[$F{pedido}.getVendedor().getId()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="53" width="19" height="20" uuid="f9126783-3fbc-4bb2-98a7-5994f112aa08"/>
+				<text><![CDATA[   -]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="399" y="53" width="145" height="20" uuid="391d1f6c-60dd-447b-918e-98554f35b0a6"/>
+				<textFieldExpression><![CDATA[$F{pedido}.getVendedor().getNome()]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<detail>

@@ -1,0 +1,108 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<h1>Cadastro de Autores</h1>
+<a href="#autorlist"> Lista de Autores <img alt="Novo" src="resources/img/list-icon.png" border="0">
+</a>
+
+<br />
+<br />
+
+<div class="col-lg-9 col-md-8">
+	<div class="card">
+		<div class="content">
+			<form id="formAutor" ng-submit="salvarAutor();">
+				<div class="row">
+				
+					<div class="col-md-3">
+						<div class="form-group">
+							<img alt="Foto" id="imagemAutor" src=""  style="width: 118px;height: 140px;" border="0">
+							<input type="file"  id="file"  onchange="javascript:visualizarImg();">
+						</div>
+					</div>
+				
+					<div class="col-md-2">
+						<div class="form-group">
+							<label>Id</label> <input type="text" ng-model="autor.id"
+								class="form-control border-input" disabled />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Nome Abrev</label> <input type="text" ng-model="autor.nomeabrev"
+								class="form-control border-input" placeholder="Nome Abrev"
+								required="required">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>Nome</label> <input type="text" ng-model="autor.nome"
+								class="form-control border-input" placeholder="Nome"
+								required="required">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">		
+				    <div class="col-md-4">
+						<div class="form-group">
+							<label>Data Nascimento</label> <input type="date" ng-model="autor.datanascimento"
+							    value="@autor.datanascimento.ToString('yyyy-MM-dd')"
+								class="form-control border-input" placeholder="Data Nascimento">
+						</div>
+					</div>
+							
+					<div class="col-md-2">
+						<div class="form-group">
+							<label>Sexo</label> 
+							<select ng-model="autor.sexo" class="form-control"> 
+							  <option value="M">M</option>
+							  <option value="F">F</option>
+							</select>							
+						</div>
+					</div>
+					
+					<div class="col-md-1">
+						<div class="form-group">
+							<label>Ativo</label> 
+							<input type="checkbox" class="form-control" ng-model="autor.ativo" ng-checked="true">						
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="row">
+			         <div class="col-md-12">
+						<div class="form-group">
+							<label for="resumo">Breve Resumo</label> <textarea cols="12" rows="3"
+							       class="form-control border-input"
+								   ng-model="autor.resumo" placeholder="Breve Resumo"></textarea>
+						</div>
+					</div>
+			    </div>
+			    
+			    <div class="row">					 
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="principaisobras">Principais Obras</label> <textarea cols="12" rows="3"
+							       class="form-control border-input"
+								   ng-model="autor.principaisobras" placeholder="Principais Obras"></textarea>
+						</div>
+					</div> 
+				</div>
+				
+				<button type="submit" class="btn btn-info btn-fill btn-wd">Cadastrar</button>
+				<button type="button" class="btn btn-info btn-fill btn-wd"
+					    onclick="document.getElementById('formAutor').reset();">Limpar</button>
+			</form>
+		</div>
+	</div>
+	
+</html>

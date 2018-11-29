@@ -19,12 +19,6 @@ public class ItemPedido {
 	@ForeignKey(name = "livro_fk")
 	private Livro livro;
 	
-	/*
-	@ManyToOne
-	@ForeignKey(name = "filme_fk")
-	private Filme filme;
-    */
-	
 	@ManyToOne
 	@ForeignKey(name = "pedido_fk")
 	private Pedido pedido;

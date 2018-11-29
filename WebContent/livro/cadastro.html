@@ -10,7 +10,7 @@
 <br />
 <br />
 
-<div class="col-lg-9 col-md-8"  ng-init="listarFornecedores(); carregarGenero();">
+<div class="col-lg-9 col-md-8"  ng-init="listarFornecedores(); carregarGenero(); listarAutores();">
 	<div class="card">
 		<div class="content">
 			<form id="formLivro" ng-submit="salvarLivro();">
@@ -148,6 +148,25 @@
 						</div>
 					</div>	
 					
+				</div>
+				
+				
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group"> 
+						   <label>Autor 1</label> 
+							<select ng-model="livro.autorlivro.livro_id"
+							        ng-model="livro.autorlivro.autor_id"
+							 id="selectAutor"
+							  class="form-control"> 
+							  <option value="">Selecione</option> 
+							  <option
+							  	ng-repeat="autor in autoresList"  
+							  	value="{{autor.id}}">{{autor.nomeabrev}}
+							  </option>
+							</select>	
+						</div>
+					</div>
 				</div>
 				
 				
